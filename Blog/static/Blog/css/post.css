@@ -1,0 +1,264 @@
+
+.post {
+    width: 60%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+.date-cat-post {
+    width: auto;
+}
+
+.date-cat-post small {
+    color: #3b3b3b;
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0.1rem;
+}
+
+small a {
+    text-decoration: none;
+    color: #3b3b3b;
+}
+
+.title-post {
+    color: #2b2b2b !important;
+
+}
+
+.post-author {
+    font-weight: 300;
+    color: #3b3b3b;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.post img {
+    width: 98%;
+    margin-top: 1rem;
+}
+
+.post-image {
+    width: 100%;
+    height: 28rem;
+    border-radius: 3px;
+    display: block;
+}
+
+.post p {
+    text-align: justify !important;
+
+}
+
+.post-body  {
+    white-space: pre-line;
+    color: #2e2e2e !important;
+    width: 100%;
+    text-align: justify !important;
+    font-size: 1.2rem;
+    line-height: 1.5em !important;
+}
+
+
+.post-bottom-line {
+    border-top: 1px solid rgba(134, 133, 133, 0.603);
+    width: 98%;
+}
+
+.post-bottom {
+    display: flex;
+    flex-direction: row;
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+}
+
+
+
+.count-num {
+    width: 2rem;
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    color: #3b3b3b ;
+
+}
+
+.go_login,
+.unlike-btn, .like-btn {
+    font-size: 1.2rem;
+    color: rgba(39, 38, 38, 0.897);
+    background: none;
+	border: none;
+    cursor: pointer;
+
+
+}
+ 
+
+.edit,
+.delete {
+    text-decoration: none;
+    color: #5a5a5a;
+    margin: 1rem;
+   font-size: 15px;
+   
+}
+
+.edit:hover,
+.delete:hover {
+    color: #302f2f;
+}
+
+.comment-form {
+    width: 80%;
+    padding-bottom: 2rem;
+    position: relative;
+
+}
+
+textarea {
+    width: 60%;
+    height: 3rem;
+    border-radius: 10px;
+    padding: 1%;
+    margin-top: 2rem;
+    margin-left: 1em;
+    border: 0.005rem solid #494949;
+}
+
+img.profile-img-comments  {
+    width: 8%;
+    border-radius: 50%;
+    height: auto;
+    margin: auto 0;
+    margin-bottom: 2.5em;
+}
+
+.send-btn  {
+    position: absolute;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: black solid 1px;
+    background-color: rgb(39, 39, 39);
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    top: 2.5rem;
+    -ms-transform: rotate(0deg);
+    transform: rotate(45deg);
+    cursor: pointer;
+    
+  }
+
+  .send-btn:hover {
+    background-color: #303030;
+  }
+
+  .comment {
+      display: flex;
+      justify-content: start;
+      padding: 1rem 0;
+  }
+
+  .comment img {
+      width: 4rem;
+      height: 4rem;
+  }
+
+    .comment-context {
+        width: 88%;
+        margin-top: 1rem;
+    }
+
+    .com-date {
+        margin-left: 1rem;
+        margin-top: 0rem;
+        font-size: 0.8rem;
+        color: #3b3b3b;
+    }
+
+    .com-body {
+        width: 100%;
+        display: inline-block;
+        color: #1b1b1b;
+
+    }
+
+    .com-delete-btn {
+        background: none;
+	    border: none;
+        color: #494949;
+        font-size: 0.8rem ;
+        cursor: pointer;
+    }
+
+    .com-delete-btn:hover {
+        text-decoration: underline;
+    }
+
+    .comments-hr {
+        width: 90%;
+        margin: 0 auto;
+        border: #6e6e6e8e 1px solid;
+    }
+
+
+
+
+
+/* 
+---------------------------------------------------------------------------------------------
+*/
+
+@media screen and (max-width: 860px){
+
+    .post {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .date-cat-post {
+        width: 12rem;
+        margin: 5% 0;
+    }
+
+
+    .title-post {
+        text-align: justify;
+        font-size: 1.3rem;
+    }
+
+    .post-author {
+        margin: 3% 0;
+        font-size: 0.8rem;
+
+    }
+
+    .post-image {
+        width: 100%;
+        height: 12rem;
+    }
+
+    .post-body {
+        width: 95%;
+        margin: 5% auto;
+        font-size: 1rem;
+    }
+
+    .post-edit{
+        width: auto;
+        margin: 0;
+    }
+
+    .post-bottom {
+        padding: 0;
+    }
+
+    .unlike-btn,
+    .like-btn {
+    font-size: 1rem;
+    color: rgba(39, 38, 38, 0.897);
+}
+
+
+
+}

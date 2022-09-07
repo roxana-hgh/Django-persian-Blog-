@@ -1,0 +1,37 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+{% block title %}<title>Log In</title>{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'Blog/css/user_forms.css' %}">{% endblock %}
+
+
+{% block contact %}
+
+<div class="box-login h-100">
+    <p>وارد حساب خود شوید</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group ">
+            <input class="form-field" type="text" name="username" id="" placeholder="نام کاربری">
+            <input class="form-field" type="password" name="password" id="" placeholder="رمز عبور">
+    
+            <div class="errors-login">
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+            </div> 
+            <button class="submit-btn" type="submit">ورود</button>
+        </div>
+        
+        
+    </form>
+    <small> حسابی ندارید؟ <a href="{% url 'register' %}"> ثبت نام کنید </a></small>
+    
+</div>
+
+{% endblock %}
+
+
+

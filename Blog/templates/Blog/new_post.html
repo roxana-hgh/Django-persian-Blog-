@@ -1,0 +1,49 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+
+{% block title %}<title>پست جدید</title>{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'Blog/css/post-forms.css' %}">{% endblock %}
+
+{% block contact %}
+<div class="contant" style="direction: rtl;">
+    <div class="new-post-container">
+        <h2 class="mt-2">نوشتن پست جدید</h2>
+    <form class="new-post-form" action="" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        
+        {{form.title}}
+
+        {{form.media}}
+
+        <div class="body-ckeditor">
+        {{form.body}}
+        </div>
+
+        <div class="form-row">
+        <small class="choose-image">عکس پست را انتخاب کنید:</small>
+        {{form.image}}
+        <small class="choose-category">موضوع دسته‌بندی پست را انتخاب کنید:</small>
+        {{form.category}}
+        </div>
+        <button type="submit" class="submit-btn p-2 px-3 my-4">انتشار پست</button>    
+    </form>
+    </div>
+</div>
+
+<script>
+    let title = document.getElementsByTagName('input');
+    title[1].placeholder = 'عنوان';
+    title[1].className += 'new-post-title'
+    
+    let post_body = document.getElementsByTagName('textarea');
+    post_body[0].placeholder = 'متن پست را اینجا بنویسید'
+    post_body[0].className += 'new-post-body'
+
+    
+    
+</script>
+    
+{% endblock %}

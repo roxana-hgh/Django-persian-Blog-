@@ -1,0 +1,56 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+{% block title %}<title>Sign Up</title>{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'Blog/css/user_forms.css' %}">{% endblock %}
+
+
+{% block contact %}
+
+<div class="box-signup">
+    <p>به ما بپیوندید</p>
+<form action="" method="POST">
+    {% csrf_token %}
+  
+    <div class="form-group">
+        {{form.username}}
+        {{form.first_name}}
+        {{form.email}}
+        {{form.password1}}
+        {{form.password2}}
+
+        <div class="errors-signup">
+          {{form.errors}}
+        </div>
+            
+        <button class="submit-btn" type="submit">ایجاد حساب</button>
+
+    </div>
+    
+</form>
+<small> قبلا حساب ساخته‌اید؟ <a href="{% url 'login' %}">وارد شوید</a></small>
+</div>
+
+
+
+<script>
+    let form_fields = document.getElementsByTagName('input');
+    form_fields[1].placeholder = 'نام کاربری';
+    form_fields[2].placeholder = 'نام';
+    form_fields[3].placeholder = 'ایمیل';
+    form_fields[4].placeholder = 'رمز عبور';
+    form_fields[5].placeholder = 'تائید رمز عبور';
+
+    for(var field in form_fields){
+        form_fields[field].className += 'form-field'
+    }
+    
+</script>
+
+{% endblock %}
+
+
+
+
+

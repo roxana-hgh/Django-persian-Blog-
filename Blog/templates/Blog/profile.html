@@ -1,0 +1,146 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+{% block title %}<title>پروفایل | {{user}} </title>{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'Blog/css/profile.css' %}">{% endblock %}
+
+
+{% block contact %}
+
+<div class="">
+  followings :
+  <ul>
+    {% for item in followings %}
+    <li>{{item.profile.profile_pic.url}}</li>
+    {% endfor %}
+  </ul>
+  <hr>
+  <ul>
+    followers:
+    {% for item in followers %}
+    <li>{{item}}</li>
+    {% endfor %}
+  </ul>
+
+</div>
+
+<div class="contant">
+        <div class="profile-head me-1 px-3">
+            {% if user.profile.profile_pic  %}
+            <img class="profile-img" src="{{user.profile.profile_pic.url}}" alt="">
+            {% else %}
+            <img class="profile-img" src="/media/uplodes/profiles/default-profile-pic.jpg" alt="">
+            {% endif %}
+            
+            <div class="user-info mt-4">
+                <p class="name">{{user.first_name}} {{user.last_name}}</p>
+                <small>@{{user.username}}</small>
+                <p class="bio">{{user.profile.bio}}</p>
+                {% if user.profile.instagram_url  %}
+                <a href="{{user.profile.instagram_url}}"><i class="fab fa-instagram"></i></a>
+                {% endif %}
+
+                {% if user.profile.twitter_url  %}
+                <a href="{{user.profile.twitter_url}}"><i class="fab fa-twitter"></i></a>
+                {% endif %}
+
+                {% if user.profile.website_url  %}
+                <a href="{{user.profile.website_url}}"><i class="fa fa-globe"></i></a>
+                {% endif %}
+
+                {% if user.profile.linkedin_url  %}
+                <a href="{{user.profile.linkedin_url}}"><i class="fab fa-linkedin"></i></a>
+                {% endif %}
+              
+            </div> <!-- end user-info -->
+
+            <div class="buttons mt-4">
+                {% if request.user == user %}
+                <a class="logout-btn" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt profile-icon mx-1"></i>خروج از حساب  </a><br>
+                <a class="edit-profile-btn" href="{% url 'profile_edit' %}"><i class="fas fa-pen profile-icon mx-1"></i>ویرایش پروفایل </a>
+                <a class="new-post my-2" href="{% url 'new_post' %}"><button > پست جدید</button></a>
+                {% else %}
+                <button>follow</button>
+                {% endif %}
+            </div> <!-- end buttons -->
+                        
+</div> <!-- end profile-head -->
+        
+            
+{% if page_obj %}
+    <h3 class="posts-top-text my-3">پست ها</h3>
+        <div class="posts" id="posts">
+        {% for post in page_obj.object_list %}
+            <div class="post-section">
+                    <a class="post-link" href="{% url 'view_post' post.id %}">
+                    <img class="post-image-home" src="{{post.image.url}}">
+                    <div class="date-cat">
+                        <small>{{post.category}}</small>
+                        <small>{{post.date | date:'M d, Y'}}</small>
+                    </div>
+                        
+                    <p class="title-home">{{post.title}}</p>
+                    <div class="post-body-home">
+                        <p>{{post.body | safe}}</p>
+                    </div>
+                    </a>        
+            </div>
+            {% endfor %}
+        </div> 
+        <nav class=" d-flex justify-content-center mb-3" aria-label="...">
+            <ul class="pagination">
+ 
+              {%if page_obj.has_next %} 
+            <li class=" page-item mx-2">
+                <a href="?page={{page_obj.next_page_number}}" class="page-link">صفحه بعد</a>
+              </li>
+            {% else %} 
+            <li class="page-item disabled mx-2">
+                <a class="page-link">صفحه بعد</a>
+              </li>
+            {% endif %}
+
+            <li class="page-item active mx-2" aria-current="page">
+                {{page_obj.number}}
+              </li>
+
+              {%if page_obj.has_previous %} 
+              <li class="page-item mx-2">
+                  <a href="?page={{page_obj.previous_page_number}}" class="page-link">صفحه قبل</a>
+                </li>
+              {% else %} 
+              <li class="page-item  mx-2">
+                  <a class="page-link">صفحه قبل</a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+            
+
+
+{% else %}
+<h5>هیچ پستی برای نمایش نیست! یکی اضافه کنید <a style="text-decoration: underline ;" href="{% url 'new_post' %}">پست جدید</a></h5>
+{% endif %}
+</div>  
+
+<script>
+  $(".like-btn").click(function () {
+    var id = $(this).attr("data-catid");
+    $.ajax({
+      type: "GET",
+      url: "{% url 'post-like' %}",
+      data: {
+        pk: id,
+      },
+      success: function (data) {
+        location.reload();
+        console.log("done");
+      },
+      error: function () {
+        console.log("error");
+      },
+    });
+  });
+</script>
+{% endblock %}

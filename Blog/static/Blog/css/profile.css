@@ -1,0 +1,183 @@
+:root {
+    --primary-yellow : #FFA800;
+    --seconondary-yellow : #FFEE32;
+    --dark-grey : #202020;
+}
+
+
+.profile-head {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+  
+
+}
+
+.profile-img {
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+}
+
+.user-info {
+    width: 65%;
+
+}
+
+.name {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+.user-info small {
+    color: #5c5c5c;
+    margin-right: 0.5rem;
+
+}
+
+.bio {
+    width: 80%;
+    color: #353535;
+    max-width: 100%;
+}
+
+.user-info .fa-instagram {
+    color: #cd0a82;
+    font-size: 1rem;
+    margin-right: 0.4rem;
+}
+
+.user-info .fa-twitter{
+    color: #0a68a7;
+    font-size: 1rem;
+    margin-right: 0.4rem;
+}
+
+.user-info .fa-linkedin {
+    color: #2e25a1;
+    font-size: 1rem;
+}
+
+.user-info .fa-globe {
+    color: #8f8f8f;
+    font-size: 1rem;
+    margin-right: 0.4rem;
+}
+
+.buttons {
+    width: 15%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.logout-btn,
+.edit-profile-btn {
+    color: #3c3b3b;;
+    text-decoration: none ;
+}
+
+.profile-icon {
+    color: var(--primary-yellow);
+    font-size: 1.2rem;
+    
+}
+
+
+
+.new-post {
+    height: auto;
+    justify-self: end;
+}
+
+.new-post button {
+    width: 7.5rem;
+    height: 2.5rem;
+    text-decoration: none;
+    color: var(--dark-grey);
+    font-size: 1.1rem;
+    font-weight: 300;
+    border: var(--dark-grey) 0.05rem solid;
+    border-radius: 5px;
+    background-color: var(--primary-yellow);
+    cursor: pointer;
+    padding: 0.2rem;
+   
+
+}
+
+.new-post button:hover {
+    background-color: var(--seconondary-yellow);
+    color: var(--dark-grey);
+}
+
+.posts-top-text {
+    margin-right: 3%;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.title.home {
+    direction: rtl;
+}
+
+
+/* 
+---------------------------------------------------------------------------------------------
+*/
+
+
+@media screen and (max-width: 860px){
+    .profile-head {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        
+    }
+
+    .profile-img {
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        margin-top: 0.5rem;
+    }
+    
+    .user-info {
+        width: 90%;
+        order: 1;
+        font-size: 1rem;
+        margin-top: 0 !important;
+    }
+    
+    .name {
+        font-size: 1.2rem;
+    }
+    
+    .bio {
+        width: 95%;
+    }
+
+    .buttons {
+        display: inline-block;
+        width: 40%;
+        font-size: 0.9rem;
+
+    
+    }
+    
+    .new-post button {
+        width: 7.5rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        bottom: 0;
+        position: relative;
+    }
+
+}

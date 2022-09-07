@@ -1,0 +1,349 @@
+/* log in form - registeration form - edit profile form - change password form */
+:root {
+    --primary-yellow : #FFA800;
+    --seconondary-yellow : #FFEE32;
+    --dark-grey : #202020;
+}
+
+.box-login {
+    width: 40%;
+    height:25rem;
+    margin: 3% auto;
+    padding: 2%;
+    border-radius: 5px;
+}
+
+.box-login p,
+.box-signup p {
+    margin: 1rem auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c2c2c;
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-field {
+    border: none;
+    border-bottom: 0.07rem solid rgba(75, 74, 74, 0.788);
+    width: 60%;
+    height: 2rem;
+    margin-top: 2rem ; 
+    border-radius: 5% 5% 0 0;
+    font-size: 0.9rem;
+    color: rgb(48, 47, 47);
+}
+
+.form-field:focus {
+    outline: none;
+    border-bottom: 0.1rem solid var(--primary-yellow);
+}
+
+.submit-btn {
+    width: 7rem;
+    height: 2rem;
+    color: var(--dark-grey);
+    background-color: var(--primary-yellow);
+    border: 1px solid var(--primary-yellow);
+    border-radius: 5px;
+    margin: 2rem 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: var(--seconondary-yellow);
+}
+
+.box-login small,
+.box-signup small{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+}
+
+.box-login small a,
+.box-signup small a {
+    margin-left: 1rem;
+    text-decoration: none;
+    color: var(--primary-yellow);
+}
+
+.box-login small a:hover,
+.box-signup small a:hover {
+    text-decoration: underline;
+}
+
+.errors-login p {
+    color: #ce0f0f;
+    font-size: 1rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.errors-signup ul {
+    list-style: none;
+    color: #ce0f0f;
+    padding-left: 1rem;
+}
+
+.box-signup {
+    width: 40%;
+    height: auto;
+    margin: 3% auto;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+}
+
+
+.input-field {
+    border: none;
+    border-bottom: 0.07rem solid rgba(75, 74, 74, 0.788);
+    width: 75%;
+    height: 2rem;
+    padding-left: 1rem;
+    border-radius: 5% 5% 0 0;
+    font-size: 1rem;
+    color: rgb(46, 46, 46);
+}
+
+.input-field[type="text"] {
+    direction: ltr;
+
+}
+
+
+
+.input-field:focus {
+    outline: none;
+    border-bottom: 0.1rem solid var(--primary-yellow);
+}
+
+.icon {
+    position: absolute;
+    z-index: 3;
+    margin: 0.5rem 0.5rem;
+    color: rgba(141, 141, 141, 0.753);
+}
+
+.input-icons {
+    margin-bottom: 1rem;
+
+}
+
+.edit-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.pass-change-btn {
+    text-decoration: none;
+    color: #303030;
+}
+
+.pass-change-btn:hover {
+    text-decoration: underline;
+}
+
+.fa-edit {
+    color: #303030;
+    margin-left: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.message {
+    font-size: 0.5rem;
+
+}
+
+
+.title {
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: #292929;
+
+}
+
+.edit-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    
+}
+
+.left {
+    width: 45%;
+}
+
+.right {
+    width: 45%;
+}
+
+
+.profile-img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5%;
+}
+
+.imgs {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.pro-pic-text {
+    font-weight: 600;
+    font-size: 1rem ;
+    margin: 0;
+    color: #313131;
+    margin-bottom: 1rem;
+}
+
+.edit-img {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-left: 2rem;
+    font-size: 0.8rem;
+}
+
+.edit-img input {
+    border: none;
+    padding: 0;
+    font-size: 0.9rem;
+}
+
+.edit-img input:hover {
+    border: none;
+}
+
+.bio-area {
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.bio-area textarea {
+    width: 80%;
+    height: 8rem;
+   
+}
+
+label {
+    font-weight: 600;
+    color: #303030;
+}
+
+.profile-edit-btn {
+    margin-top: 3rem;
+}
+
+.errors-edit {
+    width: 30%;
+    background-color: #fce8e8;
+    padding: 0 3%;
+    color: #4b0909;
+    margin: 0 auto;
+
+
+}
+
+.submit-btn {
+    width: 10rem;
+    color: var(--dark-grey);
+    background-color: var(--primary-yellow);
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    height: 2.5rem;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+
+/* 
+---------------------------------------------------------------------------------------------
+*/
+
+@media screen and (max-width: 860px){
+
+    .box-login {
+        width: 90%;
+        height:30rem;
+
+    }
+
+    .form-field {
+        width: 50%;
+        height: 2rem;
+        padding-left: 1rem;
+    }
+
+
+    .box-signup {
+        width: 90%;
+        height: auto;
+        margin: 0rem auto;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        margin-top: 0rem;
+        
+    }
+
+
+    .title {
+        margin-right: 1rem;
+    
+    }
+    
+    .edit-container {
+        flex-direction: column;
+        width: 95%;
+        margin: 0 auto;
+        
+    }
+    
+    .left {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .right {
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    .edit-img {
+        width: 60%;
+        margin-right: 1em;
+    }
+
+
+    .profile-img {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .bio-area textarea {
+        width: 100%;
+    }
+    
+    .input-field {
+        width: 100%;
+    }
+    
+
+}

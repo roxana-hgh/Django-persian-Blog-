@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/6.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/d9d0d40d2c.js"></script>
+
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="{% static 'Blog/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Blog/bootstrap/css/bootstrap.rtl.min.css' %}">
+    
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'Blog/css/home_index.css' %}">
+    {% block style %}{% endblock %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+        <nav class="index-navbar d-flex justify-content-between py-2 px-3 text-light">
+            
+            <ul class="nav-menu d-flex py-2" id="nav-menu">
+                <a class="logo mx-3">وبلاگ</a>
+                <li class="nav-item mx-3 my-1"> <a class="nav-item" href="{% url 'home' %}"> صفحه اصلی </a></li>
+                <li class="nav-item mx-3 my-1">درباره ما</li>
+                <li class="nav-item mx-3 my-1">تماس با ما</li>
+            </ul>
+            
+            <div class="hamberger" id="hamberger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>  
+            
+            <a href="{% url 'login' %}" class="profile-icon my-auto me-4"> <i class="fa fa-user"></i></a>
+        </nav>
+
+
+
+
+    {% block contact %}{% endblock %}
+
+
+    <footer class="text-center text-white">
+        <!-- Grid container -->
+        <div class="container p-4">
+          <div class="top-layer d-flex justify-content-between">
+            <a class="logo mx-3">وبلاگ</a>
+            <!-- Section: Social media -->
+          <section class="social-icons mb-4">
+            <!-- Twitter -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="fab fa-twitter"></i
+            ></a>
+      
+      
+            <!-- Instagram -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="fab fa-instagram"></i
+            ></a>
+      
+            <!-- Linkedin -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+      
+            <!-- Github -->
+            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+          
+        </div>
+      
+          <!-- Section: Form -->
+          <section class="">
+            <form action="">
+              <!--Grid row-->
+              <div class="row d-flex justify-content-start">
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-auto">
+                  <p class="pt-2">
+                    <strong>عضویت در خبرنامه</strong>
+                  </p>
+                </div>
+              
+                <div class="col-md-5 col-12">
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input type="email" id="form5Example21" placeholder="ایمیل" class="form-control" />
+                    
+                  </div>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-auto">
+                  <!-- Submit button -->
+                  <button type="submit" class="btn mb-4">
+                    عضویت
+                  </button>
+                </div>
+              <!--Grid column-->
+      
+                
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </form>
+          </section>
+          <!-- Section: Form -->
+      
+    
+      
+          
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); font-size: 0.8rem;">
+          © 2020 Copyright: Roxana Haghgoo
+        </div>
+        <!-- Copyright -->
+      </footer>
+      <!-- Footer -->
+
+
+      <script src="{% static 'Blog/bootstrap/js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'Blog/bootstrap/js/bootstrap.bundle.js' %}"></script>
+     <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script> 
+    
+     <script src="{% static 'Blog/js/main.js' %}"></script>
+
+    
+    
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+</body>
+</html>

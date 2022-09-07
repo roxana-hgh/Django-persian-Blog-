@@ -1,0 +1,48 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+{% block title %}<title>ویرایش پست</title>{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'Blog/css/post-forms.css' %}">{% endblock %}
+
+
+
+{% block contact %}
+<div class="contant">
+    <h2>ویرایش پست</h2>
+    <form class="new-post-form" action="" method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        
+        {{form.title}}
+        {{form.media}}
+        {{form.body}}
+        <div class="form-row">
+        <small class="choose-image">در صورت تمایل می توانید تصویر پست خود را ویرایش کنید</small>
+        {{form.image}}
+        <small class="choose-category">ویرایش دسته بندی</small>
+        {{form.category}}
+        </div>
+        <button class="submit-btn my-3" type="submit">ویرایش</button>   
+    </form>
+</div>
+
+<script>
+    let title = document.getElementsByTagName('input');
+    title[1].placeholder = 'Title';
+    title[1].className += 'new-post-title'
+    
+    let post_body = document.getElementsByTagName('textarea');
+    post_body[0].placeholder = 'Write your post here ...'
+    post_body[0].className += 'new-post-body'
+
+    
+    
+</script>
+</div>
+{% endblock %}
+
+
+
+
+

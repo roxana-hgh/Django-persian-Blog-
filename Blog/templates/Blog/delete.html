@@ -1,0 +1,25 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+
+{% block title %}<title>Confirm Delete post</title>{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'Blog/css/post-forms.css' %}">{% endblock %}
+
+
+{% block contact %}
+<div class="contant">
+    <div class="delete">
+        <h2>آیا مطمئن هستید که می‌خواهید "{{post}}" را حذف کنید؟ <h2>
+    <div class="btns ">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class=" submit-btn confirm-btn mx-2" type="submit" value="حذف پست">
+            </form>
+            <a href="{% url 'home' %}" ><button class="submit-btn cancle-btn">لغو</button></a>
+        </div>
+    
+    </div>
+
+</div>
+{% endblock %}

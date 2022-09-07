@@ -1,0 +1,123 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+{% block title %}<title>ویرایش پروفایل</title>{% endblock %}
+
+{% block style %}<link rel="stylesheet" href="{% static 'Blog/css/user_forms.css' %}">{% endblock %}
+
+
+{% block contact %}
+
+
+<div class="errors-edit"">
+  {{user_form.errors}}
+  {{profile_form.errors}}
+  
+</div>
+
+<div class="contant">
+<p class="title">ویرایش حساب کاربری</p>
+
+<div class="edit-container">
+<div class="left">
+<form class="edit-form" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="imgs">
+  {% if user.profile.profile_pic  %}
+  <img class="profile-img" src="{{user.profile.profile_pic.url}}" alt="">
+  {% else %}
+  <img class="profile-img" src="/media/uplodes/profiles/default-profile-pic.jpg" alt="">
+  {% endif %}
+  
+  <div class="edit-img">
+    <p class="pro-pic-text">تغییر تصویر پروفایل </p> <br>
+    {{profile_form.profile_pic}}
+  </div>
+</div>    
+
+
+
+  <div class="bio-area">توضیحات <br> {{profile_form.bio}}</div>
+  <div class="socials-edit">
+    <div class="input-icons">
+      <i class="fab fa-instagram icon"></i>
+      {{profile_form.instagram_url}}
+    </div>
+    
+    <div class="input-icons">
+      <i class="fab fa-twitter icon"></i>
+      {{profile_form.twitter_url}}
+    </div>
+    
+    <div class="input-icons">
+      <i class="fab fa-linkedin icon"></i>
+      {{profile_form.linkedin_url}}
+    </div>
+    
+    <div class="input-icons">
+      <i class="fas fa-globe icon"></i>
+      {{profile_form.website_url}}
+    </div>
+  </div> <!--end social-edit-->
+
+</div> <!-- end left -->
+
+
+<div class="right">
+
+  <label>نام کاربری:</label>
+  <div class="input-icons">
+    <i class="fas fa-user-circle icon"></i>
+    {{user_form.username}}
+
+  </div>
+
+  <label>نام:</label>
+  <div class="input-icons">
+      <i class="far fa-user icon"></i>
+    {{user_form.first_name}}
+  </div>
+
+  <label>نام خانوادگی:</label>
+  <div class="input-icons">
+      <i class="fa fa-user icon">
+      </i>
+    {{user_form.last_name}}
+  </div>
+  
+  <label>ایمیل:</label>
+  <div class="input-icons">
+      <i class="fa fa-envelope icon">
+      </i>
+    {{user_form.email}}
+  </div>
+  
+  <div class="edit-btns">
+    <a class="pass-change-btn" href="{% url 'change_password' %} "> تغییر رمز عبور <i class="fas fa-edit"></i></a>
+    
+  <button class="submit-btn profile-edit-btn" type="submit">ویرایش</button>
+</div> <!-- end edit btns -->
+
+</div> <!-- end right -->
+  
+</form>
+</div> <!--end edit-container -->
+</div> <!-- end contant -->
+
+
+
+<script>
+    let form_fields = document.getElementsByTagName('input');
+    for(var field in form_fields){
+        form_fields[field].className += 'input-field'
+    }
+    
+</script>
+
+{% endblock %}
+
+
+
+
+
