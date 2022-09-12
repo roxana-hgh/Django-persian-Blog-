@@ -115,10 +115,31 @@
        
         {% else %}
 
-        <h5>هیچ پستی برای نمایش نیست! یکی اضافه کنید <a style="text-decoration: underline ;" href="{% url 'new_post' %}">پست جدید</a></h5>
+        <h5 class="text-secondary m-auto fs-6">هیچ پستی برای نمایش نیست! یکی اضافه کنید <a style="text-decoration: underline ;" href="{% url 'new_post' %}">پست جدید</a></h5>
         
         {% endif %}
     </div> 
+
+ <hr>
+ <h3>Followings</h3>
+      {% for post in followins_post %}
+      <div class="post-section">
+        <a class="post-link" href="{% url 'view_post' post.id %}">
+        <img class="post-image-home" src="{{post.image.url}}">
+        <div class="date-cat">
+            <small>{{post.category}}</small>
+            <small>{{post.date | date:'M d, Y'}}</small>
+        </div>
+        
+        <p class="title-home">{{post.title}}</p>
+        <div class="post-body-home">
+            <p>{{post.body | safe}}</p>
+        </div>
+        </a>    
+    </div>
+      {% endfor %}
+<hr>
+    
     
     <section class="categories-sec py-3">
         <h2 class="px-4 py-2  my-2">دسته بندی ها</h2>

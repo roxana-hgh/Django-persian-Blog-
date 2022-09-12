@@ -97,7 +97,7 @@ class Profile(models.Model):
 
 class Followers(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    another_user = models.ManyToManyField(User, related_name='following',symmetrical=False)
+    another_user = models.ManyToManyField(User, related_name='following',symmetrical=False, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

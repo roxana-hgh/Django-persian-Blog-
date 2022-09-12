@@ -66,12 +66,23 @@
     margin-right: 0.4rem;
 }
 
+.counts span {
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.counts a,
+.counts p {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #4e4e4e;
+}
+
 .buttons {
     width: 15%;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
+
     align-items: center;
 
 }

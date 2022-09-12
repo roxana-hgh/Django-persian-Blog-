@@ -2,9 +2,10 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+
 from .forms import CreateUserForm, EditUserForm
 from Blog.forms import ProfileForm
-from Blog.models import Profile
+from Blog.models import Profile, Followers
 from django.contrib import messages
 
 
@@ -15,6 +16,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             Profile.objects.create(user=user)
+            Followers.objects.create(user=user)
             return redirect('login')
     return render(request, 'users/register.html',{'form': form})
 

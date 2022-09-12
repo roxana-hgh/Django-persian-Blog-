@@ -1,3 +1,4 @@
+from urllib.request import Request
 from django.shortcuts import render,redirect, HttpResponse
 from django.urls import reverse
 from .models import Post, Comments, Followers
@@ -27,7 +28,10 @@ def home(request, pk='latest'):
         page_obj = p.page(1)
     except EmptyPage:
         page_obj = p.page(p.num_pages)
-    return render(request, 'Blog/home.html',{'page_obj': page_obj, 'popular' : popular, 'latest' : latest})
+    if request.user.is_authenticated:
+        followings = Followers.objects.get(user = request.user).another_user.all().values('id')
+        followins_posts = Post.objects.filter(author__in = followings).order_by('-date')
+    return render(request, 'Blog/home.html',{'page_obj': page_obj, 'popular' : popular, 'latest' : latest, 'followins_post' : followins_posts})
 
 
 def Post_view(request,pk):
@@ -51,11 +55,12 @@ def delete_comment(request):
     return HttpResponse("succes")    
 
 
-def user_profile(request,pk):
+def user_profile(request,pk): 
     author = User.objects.get(username = pk)
     posts = Post.objects.filter(author = author).order_by('-date')
     followings = Followers.objects.get(user = author).another_user.all()
     followers = Followers.objects.filter(another_user = author)
+    followers_id = Followers.objects.filter(another_user = author).values_list('user',flat='true')
     p = Paginator(posts, 6)
     page_number = request.GET.get('page')
     try:
@@ -65,8 +70,21 @@ def user_profile(request,pk):
     except EmptyPage:
         page_obj = p.page(p.num_pages)
     return render(request, 'Blog/profile.html', {'page_obj': page_obj, 'user': author,
-    'followings':followings, 'followers': followers })
+    'followings':followings, 'followers': followers, 'posts':posts, "followers_id" : followers_id  })
 
+
+def follow_user(request):  
+    
+    follower = Followers.objects.get(user = request.user)
+    target_user = User.objects.get(id= request.GET['pk'])
+    follower.another_user.add(target_user)
+    return HttpResponse("succes")
+
+def unfollow_user(request):    
+    target_user = User.objects.get(id= request.GET['pk'])
+    follower = Followers.objects.get(user = request.user)
+    follower.another_user.remove(target_user)
+    return HttpResponse("succes")
 
 
 def categories(request, pk):
