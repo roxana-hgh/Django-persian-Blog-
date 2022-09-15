@@ -129,67 +129,29 @@ main {
 
 
 
-.active {
-    font-weight: 500;
-    font-size: 1.2rem;
-    text-decoration: none;
-    letter-spacing: 0.005rem;
-    margin: 0.15rem 0;
-    color: var(--primary-yellow);
-}
-.active:hover {
-    color: var(--primary-yellow);
-}
-
-.disactive {
-    font-weight: 200;
-    font-size: 1rem;
-    text-decoration: none;
-    letter-spacing: 0.01rem;
-    margin: 0.3rem 0.6rem;
-    color: #383838;
-}
-
-.disactive:hover {
-    color: var(--primary-yellow);
-}
-
 
 .search {
-    margin: 1rem;
-    width: 17%;
-    display: flex;
-    justify-content: end;
+    width: 50%;
     color: #5e5e5e;
-}
-
-.search-icon {
-    font-size: 1.1rem;
-    cursor: pointer;
 }
 
 
 .search-bar {
     border: 1px solid #787878d3;
     background-color: #fcfcfc80;
-    border-radius: 15px;
+    border-radius: 10px;
     color: rgb(102, 102, 102);
     width: 90%;
     height: 1.8rem;
     font-size: 1rem;
     padding: 0.1rem 0.5rem;
     margin-right: 0.2rem;
-    display: none;
 }
 
 .search-bar:focus {
-    outline: none;
     border: 2px solid #2b2b2bd3;
 }
 
-.search-bar.show {
-    display: block;
-}
 
 .contant {
     margin: 0 auto;
@@ -200,18 +162,25 @@ main {
 
 }
 
+.posts-sec-title {
+    display: block;
+    width: 95%;
+    margin: auto;
+}
+
+.posts-sec-title h3 {
+    font-size: 1.5rem;
+    color: var(--primary-yellow);
+    display: inline;
+}
+
 
 .posts {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 auto;
     justify-content: start;
     align-items: center;
-    margin-top: 1rem;
-    width: 95%;
-
-
-    
+    margin-top: 1rem; 
 }
 
 .post-section {

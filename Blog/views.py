@@ -1,3 +1,4 @@
+from multiprocessing import context
 from urllib.request import Request
 from django.shortcuts import render,redirect, HttpResponse
 from django.urls import reverse
@@ -10,16 +11,36 @@ from functools import wraps
 
 
 
-def home(request, pk='latest'):
-    if pk == 'latest':
-        posts = Post.objects.all().order_by('-date')
-        latest = 'active'
-        popular = 'disactive'
-    elif pk == 'popular':
-        posts = Post.objects.all().order_by('-likes')
-        popular = 'active'
-        latest = 'disactive'
+def home(request):
+    newest = Post.objects.all().order_by('-date')[:3]
+    populars = Post.objects.all().order_by('-likes')[:3]
+    if request.user.is_authenticated:
+        followings = Followers.objects.get(user = request.user).another_user.all().values('id')
+        followins_posts = Post.objects.filter(author__in = followings).order_by('-date')[:3]
+    else:
+        followins_posts = None
 
+    context = {
+        'newest' : newest,
+        'populars' : populars,
+        'followings': followins_posts
+    }
+    return render(request, 'Blog/home.html',context)
+
+def categories(request, pk):
+    category = str(pk)
+    if category == 'latest':
+        posts = Post.objects.all().order_by('-date')
+        category = 'جدیدترین ها'
+    elif category == 'populars':
+        posts = Post.objects.all().order_by('-likes')
+        category = 'پرطرفدارترین ها'
+    elif category == 'followings':
+        followings = Followers.objects.get(user = request.user).another_user.all().values('id')
+        posts = Post.objects.filter(author__in = followings).order_by('-date')
+        category = 'دنبال شوندگان'
+    else:
+        posts = Post.objects.filter(category = pk).order_by('-date')
     p = Paginator(posts, 6)
     page_number = request.GET.get('page')
     try:
@@ -28,11 +49,7 @@ def home(request, pk='latest'):
         page_obj = p.page(1)
     except EmptyPage:
         page_obj = p.page(p.num_pages)
-    if request.user.is_authenticated:
-        followings = Followers.objects.get(user = request.user).another_user.all().values('id')
-        followins_posts = Post.objects.filter(author__in = followings).order_by('-date')
-    return render(request, 'Blog/home.html',{'page_obj': page_obj, 'popular' : popular, 'latest' : latest, 'followins_post' : followins_posts})
-
+    return render(request, 'Blog/category.html', {'page_obj': page_obj, 'category': category})
 
 def Post_view(request,pk):
     post = Post.objects.get(id=pk)
@@ -87,18 +104,7 @@ def unfollow_user(request):
     return HttpResponse("succes")
 
 
-def categories(request, pk):
-    category = str(pk)
-    posts = Post.objects.filter(category = pk).order_by('-date')
-    p = Paginator(posts, 6)
-    page_number = request.GET.get('page')
-    try:
-        page_obj = p.get_page(page_number)
-    except PageNotAnInteger:
-        page_obj = p.page(1)
-    except EmptyPage:
-        page_obj = p.page(p.num_pages)
-    return render(request, 'Blog/category.html', {'page_obj': page_obj, 'category': category})
+
 
 
 @login_required(login_url = 'login')

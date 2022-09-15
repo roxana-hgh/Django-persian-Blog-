@@ -12,12 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     })
     
-    const search_icon = document.getElementById('search-icon')
-    const search_bar = document.getElementById('search-bar')
-    
-    search_icon.addEventListener('click', () => {
-        search_bar.classList.toggle('show')
-    })
+   
     
     
 

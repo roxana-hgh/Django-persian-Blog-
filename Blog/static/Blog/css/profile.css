@@ -137,6 +137,22 @@
     direction: rtl;
 }
 
+.users-list-item {
+    border-bottom: 1px solid #dedcdc;
+}
+.users-list-item:last-of-type {
+    border: none;
+}
+
+img.users-list-img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.counts a {
+    cursor: pointer;
+}
 
 /* 
 ---------------------------------------------------------------------------------------------

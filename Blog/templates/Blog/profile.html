@@ -10,21 +10,6 @@
 {% endblock %}
 
 {% block contact %}
-{{followings}}
-<div class="">
-  followings :
-  <ul>
-    {% for item in followings.all %}
-    <li>{{item}} : {{item.profile.profile_pic.url}}</li>
-    {% endfor %}
-  </ul>
-  <hr />
-  <ul>
-    followers: {% for item in followers.all %}
-    <li>{{item.user.username}} : {{item.user.profile.profile_pic.url}}</li>
-    {% endfor %}
-  </ul>
-</div>
 
 <div class="contant">
   <div class="profile-head me-1 px-3 mb-2">
@@ -41,10 +26,60 @@
           <small>{{user.username}}@</small>
         </div>
         <div class="counts mt-2 col-6 d-flex justify-content-start gap-2 gap-lg-3">
-          <a href="#"><span class="d-block">{{followings | length}}</span>Followings</a>
-          <a href="#"><span class="d-block">{{followers | length}}</span>Followers</a>
-          <p><span class="d-block">{{posts | length}}</span>Posts</p>
+          <a  data-bs-toggle="modal" data-bs-target="#followingsModal"><span class="d-block">{{followings | length}}</span>دنبال‌شونده</a>
+          <a  data-bs-toggle="modal" data-bs-target="#followersModal"><span class="d-block">{{followers | length}}</span>دنبال‌کننده</a>
+          <p><span class="d-block">{{posts | length}}</span>پست</p>
         </div>
+
+<!-- followersModal -->
+<div class="modal fade" id="followersModal" tabindex="-1" aria-labelledby="followersModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="followersModalLabel">دنبال‌کنندگان</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          {% for item in followers.all %}
+          <a href="{% url 'profile' item %}"><li class="users-list-item py-2 d-flex align-items-center" >
+            <img class="users-list-img" src="{{item.user.profile.profile_pic.url}}" alt="">
+            <p class="mx-3 my-0">{{item.user.username}}</p>
+      
+    </li></a>
+    {% endfor %}
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- followingsModal -->
+<div class="modal fade" id="followingsModal" tabindex="-1" aria-labelledby="followingsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="followingsModalLabel">دنبال‌شوندگان</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul>
+          {% for item in followings.all %}
+          <a href="{% url 'profile' item %}"><li class="users-list-item py-2 d-flex align-items-center" >
+            <img class="users-list-img" src="{{item.profile.profile_pic.url}}" alt="">
+            <p class="mx-3 my-0">{{item}}</p>
+      
+    </li></a>
+    {% endfor %}
+        </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
       </div>
       <p class="bio">{{user.profile.bio}}</p>
       <div class="profile-icons d-flex gap-2">
@@ -82,6 +117,10 @@
     <!-- end buttons -->
   </div>
   <!-- end profile-head -->
+
+  
+
+
 
   <div class="users-posts my-5">
     {% if page_obj %}

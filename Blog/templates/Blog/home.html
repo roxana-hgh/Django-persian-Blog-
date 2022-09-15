@@ -44,27 +44,24 @@
     </header>
 
 <main>
-    <div class="sub-nav d-flex justify-content-between px-4 mt-3">
-        <div class="sort">
-            <a class= {{latest}} href="{% url 'home' %}">آخرین مطالب</a>
-            <a class= {{popular}} href="{% url 'home' 'popular' %}">پرطرفدار ترین</a>
-        </div>
-    
+    <div class="container sub-nav p-0 my-5">
+        
         <div class="search">
             <form action="{% url 'search' %}" method="post">
                 {% csrf_token %}
             <input name="word" type="text" id="search-bar" class="search-bar" placeholder="جستجو ">
             </form>
-           <div class="search-icon" id="search-icon" ><i  class="fa fa-search"></i></div>
+           
         </div>
         
     </div>
 
 
-    <div class="contant">        
-        <div class="posts mx-auto" id="posts">
-            {% if page_obj.object_list %}
-            {% for post in page_obj.object_list %}
+    <div class="contant" id="posts"> 
+      {% if newest  %}       
+  <a class="posts-sec-title" href="{% url 'category' 'latest' %}"><h3> جدیدترین ها</h3> </a> 
+  <div class="posts newest-posts mx-auto">       
+            {% for post in newest %}
             <div class="post-section">
                 <a class="post-link" href="{% url 'view_post' post.id %}">
                 <img class="post-image-home" src="{{post.image.url}}">
@@ -81,64 +78,59 @@
             </div>
     {% endfor %}
         </div>
+      {% endif %}
+
+        {% if populars  %}
+        <a class="posts-sec-title" href="{% url 'category' 'populars' %}"><h3> پرطرفدارترین ها</h3> </a> 
+        <div class="posts popular-posts mx-auto" >
+          {% for post in populars %}
+          <div class="post-section">
+              <a class="post-link" href="{% url 'view_post' post.id %}">
+              <img class="post-image-home" src="{{post.image.url}}">
+              <div class="date-cat">
+                  <small>{{post.category}}</small>
+                  <small>{{post.date | date:'M d, Y'}}</small>
+              </div>
+              
+              <p class="title-home">{{post.title}}</p>
+              <div class="post-body-home">
+                  <p>{{post.body | safe}}</p>
+              </div>
+              </a>    
+          </div>
+  {% endfor %}
+      </div>
+      {% endif %}
        
-        <nav class=" d-flex justify-content-center mb-3" aria-label="...">
-            <ul class="pagination">
+      {% if followings  %}
+      <a class="posts-sec-title" href="{% url 'category' 'followings' %}"><h3> دنبال شوندگان</h3> </a> 
+      <div class="posts following-posts mx-auto" >
+        {% for post in followings %}
+        <div class="post-section">
+            <a class="post-link" href="{% url 'view_post' post.id %}">
+            <img class="post-image-home" src="{{post.image.url}}">
+            <div class="date-cat">
+                <small>{{post.category}}</small>
+                <small>{{post.date | date:'M d, Y'}}</small>
+            </div>
+            
+            <p class="title-home">{{post.title}}</p>
+            <div class="post-body-home">
+                <p>{{post.body | safe}}</p>
+            </div>
+            </a>    
+        </div>
+{% endfor %}
+    </div>
+    {% endif %}
+      
  
-              {%if page_obj.has_next %} 
-            <li class=" page-item mx-2">
-                <a href="?page={{page_obj.next_page_number}}" class="page-link">صفحه بعد</a>
-              </li>
-            {% else %} 
-            <li class="page-item disabled mx-2">
-                <a class="page-link">صفحه بعد</a>
-              </li>
-            {% endif %}
-
-            <li class="page-item active mx-2" aria-current="page">
-                {{page_obj.number}}
-              </li>
-
-              {%if page_obj.has_previous %} 
-              <li class="page-item mx-2">
-                  <a href="?page={{page_obj.previous_page_number}}" class="page-link">صفحه قبل</a>
-                </li>
-              {% else %} 
-              <li class="page-item disabled mx-2">
-                  <a class="page-link">صفحه قبل</a>
-                </li>
-              {% endif %}
-            </ul>
-          </nav>
-       
-       
-       
-        {% else %}
+    {% if not newest %}
 
         <h5 class="text-secondary m-auto fs-6">هیچ پستی برای نمایش نیست! یکی اضافه کنید <a style="text-decoration: underline ;" href="{% url 'new_post' %}">پست جدید</a></h5>
         
         {% endif %}
     </div> 
-
- <hr>
- <h3>Followings</h3>
-      {% for post in followins_post %}
-      <div class="post-section">
-        <a class="post-link" href="{% url 'view_post' post.id %}">
-        <img class="post-image-home" src="{{post.image.url}}">
-        <div class="date-cat">
-            <small>{{post.category}}</small>
-            <small>{{post.date | date:'M d, Y'}}</small>
-        </div>
-        
-        <p class="title-home">{{post.title}}</p>
-        <div class="post-body-home">
-            <p>{{post.body | safe}}</p>
-        </div>
-        </a>    
-    </div>
-      {% endfor %}
-<hr>
     
     
     <section class="categories-sec py-3">
