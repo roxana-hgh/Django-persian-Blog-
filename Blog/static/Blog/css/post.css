@@ -1,4 +1,8 @@
-
+:root {
+    --primary-yellow : #FFA800;
+    --seconondary-yellow : #FFEE32;
+    --dark-grey : #202020;
+}
 .post {
     width: 60%;
     margin: 0 auto;
@@ -68,6 +72,7 @@ small a {
 .post-bottom {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     padding: 0 1.5rem;
     margin-bottom: 2rem;
 }
@@ -75,9 +80,9 @@ small a {
 
 
 .count-num {
-    width: 2rem;
-    margin: 0 0.5rem;
-    font-size: 1.2rem;
+    
+    margin: 0.3rem 0rem;
+    font-size: 1rem;
     color: #3b3b3b ;
 
 }
@@ -85,7 +90,7 @@ small a {
 .go_login,
 .unlike-btn, .like-btn {
     font-size: 1.2rem;
-    color: rgba(39, 38, 38, 0.897);
+    color: var(--primary-yellow);
     background: none;
 	border: none;
     cursor: pointer;
@@ -98,8 +103,7 @@ small a {
 .delete {
     text-decoration: none;
     color: #5a5a5a;
-    margin: 1rem;
-   font-size: 15px;
+   font-size: 0.8rem;
    
 }
 
@@ -110,7 +114,7 @@ small a {
 
 .comment-form {
     width: 80%;
-    padding-bottom: 2rem;
+
     position: relative;
 
 }
@@ -120,8 +124,7 @@ textarea {
     height: 3rem;
     border-radius: 10px;
     padding: 1%;
-    margin-top: 2rem;
-    margin-left: 1em;
+    margin: 0 1rem;
     border: 0.005rem solid #494949;
 }
 
@@ -130,27 +133,21 @@ img.profile-img-comments  {
     border-radius: 50%;
     height: auto;
     margin: auto 0;
-    margin-bottom: 2.5em;
+
 }
 
 .send-btn  {
-    position: absolute;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-    border: black solid 1px;
-    background-color: rgb(39, 39, 39);
-    color: rgb(255, 255, 255);
+    border: var(--dark-grey) solid 1px;
+    background-color: var(--primary-yellow);
+    color: var(--dark-grey);
     font-size: 1rem;
-    top: 2.5rem;
-    -ms-transform: rotate(0deg);
-    transform: rotate(45deg);
+    border-radius: 5px;
     cursor: pointer;
     
   }
 
   .send-btn:hover {
-    background-color: #303030;
+    background-color: var(--seconondary-yellow);
   }
 
   .comment {
@@ -256,7 +253,7 @@ img.profile-img-comments  {
     .unlike-btn,
     .like-btn {
     font-size: 1rem;
-    color: rgba(39, 38, 38, 0.897);
+
 }
 
 

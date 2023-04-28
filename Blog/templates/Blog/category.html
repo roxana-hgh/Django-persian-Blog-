@@ -30,25 +30,25 @@
 
           {%if page_obj.has_next %} 
         <li class=" page-item mx-2">
-            <a href="?page={{page_obj.next_page_number}}" class="page-link">صفحه بعد</a>
+            <a href="?page={{page_obj.next_page_number}}" class="page-link"> <i class="fa fa-angle-right"></i></a>
           </li>
         {% else %} 
         <li class="page-item disabled mx-2">
-            <a class="page-link">صفحه بعد</a>
+            <a class="page-link"><i class="fa fa-angle-right"></i></a>
           </li>
         {% endif %}
 
-        <li class="page-item active mx-2" aria-current="page">
+        <li class="page-item active my-auto mx-2" aria-current="page">
             {{page_obj.number}}
           </li>
 
           {%if page_obj.has_previous %} 
           <li class="page-item mx-2">
-              <a href="?page={{page_obj.previous_page_number}}" class="page-link">صفحه قبل</a>
+              <a href="?page={{page_obj.previous_page_number}}" class="page-link"><i class="fa fa-angle-left"></i> </a>
             </li>
           {% else %} 
-          <li class="page-item  mx-2">
-              <a class="page-link">صفحه قبل</a>
+          <li class="page-item disabled mx-2">
+              <a class="page-link"><i class="fa fa-angle-left"></i> </a>
             </li>
           {% endif %}
         </ul>

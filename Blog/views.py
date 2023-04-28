@@ -10,7 +10,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from functools import wraps
 
 
-
 def home(request):
     newest = Post.objects.all().order_by('-date')[:3]
     populars = Post.objects.all().order_by('-likes')[:3]

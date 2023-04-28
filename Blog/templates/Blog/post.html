@@ -30,6 +30,7 @@
     <hr class="post-bottom-line" />
 
     <div class="post-bottom">
+      <div class="likes d-flex">
       {% if not request.user.is_authenticated %}
       <a class="go_login" href="{% url 'login' %}">
         <i class="far fa-thumbs-up"></i>
@@ -43,20 +44,19 @@
         <i class="far fa-thumbs-up"></i>
       </button>
       {% endif %}
-
       <p class="count-num" id="count">{{post.likes.count}}</p>
-
+    </div>
       {% if request.user == post.author %}
       <div class="post-edit">
-        <a class="edit" href="{% url 'update_post' post.id %}">ویرایش</a>
+        <a class="edit mx-3" href="{% url 'update_post' post.id %}">ویرایش</a>
         <a class="delete" href="{% url 'delete_post' post.id %}">حذف</a>
       </div>
       {% endif %}
     </div>
 
-    <div class="comment-sec">
+    <div class="comment-sec mt-5">
       {% if request.user.is_authenticated %}
-      <form id="comment-form" class="comment-form" method="post">
+      <form id="comment-form" class="comment-form d-flex align-items-center" method="post">
         {% csrf_token %} {% if request.user.profile.profile_pic %}
         <img
           class="profile-img-comments"
@@ -70,8 +70,8 @@
           alt=""
         />
         {% endif %} {{form.body}}
-        <button class="send-btn" type="submit" onclick="formsubmit()">
-          <i class="fas fa-paper-plane"></i>
+        <button class="send-btn px-3 py-2 my-auto" type="submit" onclick="formsubmit()">
+          ارسال
         </button>
       </form>
       {% endif %}
@@ -96,7 +96,7 @@
         {% endfor %}
       </div>
       {% else %}
-      <p class="mb-3">هیج نظری برای نمایش وجود ندارد</p>
+      <p class="my-3">هیج نظری برای نمایش وجود ندارد</p>
       {% endif %}
     </div>
   </div>
